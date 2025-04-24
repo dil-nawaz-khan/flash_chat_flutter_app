@@ -1,3 +1,5 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:flash_chat_flutter_app/components/rounded_button.dart';
 import 'package:flash_chat_flutter_app/screens/login_screen.dart';
 import 'package:flash_chat_flutter_app/screens/registration_screen.dart';
 import 'package:flutter/material.dart';
@@ -73,60 +75,57 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                     child: Image.asset('images/logo.png'),
                   ),
                 ),
-                Text(
-                  'Flash Chat',
-                  style: TextStyle(fontSize: 40.0, fontWeight: FontWeight.w900),
+                // Text(
+                //   'Flash Chat',
+                //   style: TextStyle(fontSize: 40.0, fontWeight: FontWeight.w900),
+                // ),
+                AnimatedTextKit(
+                  displayFullTextOnTap: true,
+
+                  animatedTexts: [
+                    TypewriterAnimatedText(
+                      'Flash Chat',
+                      cursor: '|',
+                      speed: Duration(milliseconds: 100),
+                      textStyle: TextStyle(
+                        fontSize: 40.0,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
             SizedBox(height: 48.0),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                elevation: 5.0,
-                color: Colors.lightBlueAccent,
-                borderRadius: BorderRadius.circular(30.0),
-                child: MaterialButton(
-                  onPressed: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) {
-                    //       return LoginScreen();
-                    //     },
-                    //   ),
-                    // );
-                    Navigator.pushNamed(context, LoginScreen.id);
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text('Log In'),
-                ),
-              ),
+            RoundedButton(
+              title: 'Log In',
+              onPressed: () {
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) {
+                //       return LoginScreen();
+                //     },
+                //   ),
+                // );
+                Navigator.pushNamed(context, LoginScreen.id);
+              },
+              color: Colors.lightBlueAccent,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                color: Colors.blueAccent,
-                borderRadius: BorderRadius.circular(30.0),
-                elevation: 5.0,
-                child: MaterialButton(
-                  onPressed: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) {
-                    //       return RegistrationScreen();
-                    //     },
-                    //   ),
-                    // );
-                    Navigator.pushNamed(context, RegistrationScreen.id);
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text('Register'),
-                ),
-              ),
+            RoundedButton(
+              color: Colors.blueAccent,
+              title: 'Register',
+              onPressed: () {
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) {
+                //       return RegistrationScreen();
+                //     },
+                //   ),
+                // );
+                Navigator.pushNamed(context, RegistrationScreen.id);
+              },
             ),
           ],
         ),
