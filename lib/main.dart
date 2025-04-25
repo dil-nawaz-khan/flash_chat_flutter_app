@@ -1,10 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flash_chat_flutter_app/screens/chat_screen.dart';
 import 'package:flash_chat_flutter_app/screens/login_screen.dart';
 import 'package:flash_chat_flutter_app/screens/registration_screen.dart';
 import 'package:flash_chat_flutter_app/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(FlashChat());
+void main()async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  return runApp(FlashChat());
+}
 
 class FlashChat extends StatelessWidget {
   const FlashChat({super.key});
